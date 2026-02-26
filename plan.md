@@ -57,3 +57,27 @@ We are building a Chrome Extension to scrape the University of Waterloo WatCard 
    - **Left (Time of Day):** A `RadarChart` or horizontal `BarChart` showing total spending by the Time of Day buckets (Morning, Lunch, Dinner, Late Night).
    - **Right (Top Locations):** A sleek list of the Top 5 specific Terminals where the most money was spent (strip the "POS-FS-" junk from the names for a clean UI).
 5. **Bottom:** The raw scrollable transaction table with clean typography and category badges.
+
+## Phase 5: The 10X Predictive Dashboard
+**Tech Stack:** Next.js (App Router), React, TypeScript, Tailwind CSS, Recharts, `lucide-react`, `framer-motion` (for animations), `date-fns` (for date math).
+
+**Core System Upgrades:**
+1. **Local Storage:** On paste, save the JSON to `localStorage`. On page load, check `localStorage` and auto-hydrate the dashboard so the user doesn't have to re-paste data on refresh.
+2. **Predictive Engine:** Add a simple input in the header for the user to type their "Current Balance" (e.g., $500). Use the `Elapsed Days` and `Total Spend` to calculate the True Daily Burn Rate. Divide the Current Balance by the Burn Rate to calculate the "Zero Dollar Date" (Runway).
+
+**UI/UX Layout (SaaS-Grade with Framer Motion):**
+- **Animations:** Stagger the entrance of the grid cards and charts using simple Framer Motion variants.
+- **Header:** "WatCard Intelligence", Last updated timestamp, a "Clear Data" button, and a "Current Balance" input field.
+- **Row 1: The Predictive KPIs (Bento Grid):**
+  - Card 1: Total Spend & True Daily Burn Rate.
+  - Card 2: **Runway Forecast:** "You have $X left. At your current pace, you will run out of money on [Date]." Change color to red if the date is before the end of the semester.
+  - Card 3: The "Coffee Tax" (Starbucks, TH, Williams) & "Junk Food Tax" (Late night dining).
+  - Card 4: **Persona Badge:** Evaluate the data and assign a dynamic title (e.g., "The Midnight Snacker" if Late Night spend > 20%, "The Caffeine Addict" if Coffee Tax > $100, etc.).
+- **Row 2: Deep Behavioral Analytics:**
+  - **Left:** AreaChart for Daily Spend Trend.
+  - **Right:** A new RadialBarChart or horizontal BarChart comparing **Weekday vs. Weekend** spending averages.
+- **Row 3: Categorization & Locations:**
+  - **Left:** Time of Day spend (Morning, Lunch, Dinner, Late Night).
+  - **Middle:** Top 5 Locations (Cleaned terminal names).
+  - **Right:** Spending by Category (PieChart).
+- **Row 4:** The Data Table.
