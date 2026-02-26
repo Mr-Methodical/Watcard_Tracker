@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "WatCard Expense Tracker",
+  "version": "1.0",
+  "description": "Scrapes WatCard transaction history and copies it as JSON.",
+  "permissions": ["activeTab", "scripting", "clipboardWrite"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": [
+    "https://secure.touchnet.net/*"
+  ]
+}
